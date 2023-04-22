@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProver";
 
 const Login = () => {
-  const {signIn} = useContext(AuthContext)
+  const {signIn, googleSignin} = useContext(AuthContext)
   const handleLoggedIn = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -24,6 +24,17 @@ const Login = () => {
     });
   
   };
+
+  const handleGoogleLogin = ()=>{
+    googleSignin()
+    .then((result) => {
+      
+      const user = result.user;
+      console.log(user)
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -66,7 +77,9 @@ const Login = () => {
                 <button className="btn btn-primary">Login</button>
               </div>
             </form>
-
+            <div className="mt-2 text-center">
+                <button onClick={handleGoogleLogin} className="btn btn-xs btn-secondary">Login with Google</button>
+              </div>
             <label className="label ml-6 mb-4">
               <Link to="/register" className="label-text-alt link link-hover">
                 New to AuthMaster?

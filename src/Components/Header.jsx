@@ -22,6 +22,7 @@ const Header = () => {
               <a className="btn btn-ghost normal-case text-xl">AuthMaster</a>
               <Link className="btn btn-ghost normal-case text-xl" to='/'>Home</Link>
               <Link className="btn btn-ghost normal-case text-xl" to='/order'>Orders</Link>
+              {user && <Link className="btn btn-ghost normal-case text-xl" to='/profile'>Profile</Link>}
               <Link className="btn btn-ghost normal-case text-xl" to='/login'>Login</Link>
               <Link className="btn btn-ghost normal-case text-xl" to='/register'>Register</Link>
               {
